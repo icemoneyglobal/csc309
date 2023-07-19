@@ -7,8 +7,16 @@
     <h2>Registration Form</h2>
 
     <!-- Select all users and display in a Table -->
-    <table>
+    <table border = "1">
         <thead>
+            <tr>
+                <th>SN</th>
+                <th>LASTNAME</th>
+                <th>FIRSTNAME</th>
+                <th>GENDER</th>
+                <th>DATE OF BIRTH</th>
+                <th>EMAIL</th>
+            </tr>
             <!-- Complete the table header row -->
         </thead>
 
@@ -17,7 +25,32 @@
                 // Complete code to:
                 // Connect to the DB
                 // Select all records from users table
-                // Display all the selected records
+                // Display all the selected recor
+                $server = 'localhost'; // 127.0.0.1
+                $username = 'root';
+                $password = '';
+                $db = 'csc309';
+
+                // Open a new connection
+                $con = new mysqli($server, $username, $password, $db);
+                $sql = "SELECT* FROM users";
+                $result = $con->query($sql);
+                // Check connection
+                if ($con->connect_error){
+                     die("Connection failed: " . $con->connect_error);
+                }
+                if($result->num_rows>0){
+                    while($row = $result->fetch_assoc()){
+                        echo "<tr>";
+                        echo "<th>" . $row['id'] . "</th>";
+                        echo "<th>" . $row['lastname'] . "</th>";
+                        echo "<th>" . $row['firstname'] . "</th>";
+                        echo "<th>" . $row['gender'] . "</th>";
+                        echo "<th>" . $row['date_of_birth'] . "</th>";
+                        echo "<th>" . $row['email'] . "</th>";
+                    }
+                }
+            
             ?>
         </tbody>
     </table>
