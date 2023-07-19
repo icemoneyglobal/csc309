@@ -2,7 +2,7 @@
 <?php
     $server = 'localhost'; // 127.0.0.1
     $username = 'root';
-    $password = 'rootroot';
+    $password = '';
     $db = 'csc309';
 
     // Open a new connection
@@ -12,11 +12,10 @@
     if ($con->connect_error){
         die("Connection failed: " . $con->connect_error);
     }
-
+    
     // Create a Table
     $sql = "INSERT INTO users (firstname, lastname, email) 
     VALUES ('Nwafor', 'Benjamin', 'benjaminn@gmail.com')";
-
     $result = $con->query($sql);
 
     if ($result === true) {
